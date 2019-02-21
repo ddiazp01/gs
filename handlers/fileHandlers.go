@@ -9,7 +9,7 @@ import (
 //IndexFile Función que devuelve el index.html
 func IndexFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Incoming request from " + r.URL.EscapedPath())
-	if r.URL.Path != PathInicio {
+	if r.URL.Path != PathIndex {
 		http.NotFound(w, r)
 		return
 	}

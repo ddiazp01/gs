@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	hnd "instagram/handlers"
+	hnd "gs/handlers"
 	"log"
 	"net/http"
 	"strconv"
@@ -11,7 +11,7 @@ import (
 func main() {
 	port := 8080
 
-	fmt.Println("Servidor de Isntagram iniciado")
+	fmt.Println("Servidor de GS iniciado")
 
 	for path, handler := range hnd.Manejadores {
 		http.HandleFunc(path, handler)

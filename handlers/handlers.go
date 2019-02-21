@@ -2,8 +2,8 @@ package handlers
 
 import "net/http"
 
-//PathInicio Ruta raíz
-const PathInicio string = "/"
+//PathIndex Ruta raíz
+const PathIndex string = "/"
 
 //PathJSFiles Ruta a la carpeta de scripts de javascript
 const PathJSFiles string = "/js/"
@@ -19,7 +19,7 @@ var Manejadores map[string]ManejadorHTTP
 
 func init() {
 	Manejadores = make(map[string]ManejadorHTTP)
-	Manejadores[PathInicio] = IndexFile
+	Manejadores[PathIndex] = IndexFile
 	Manejadores[PathJSFiles] = JsFile
 	Manejadores[PathCSSFiles] = CSSFile
 
