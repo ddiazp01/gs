@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	hnd "instagram/handlers"
+	hnd "gs/handlers"
 	"log"
 	"net/http"
 	"strconv"
@@ -11,7 +11,7 @@ import (
 func main() {
 	port := 8080
 
-	fmt.Println("Servidor de Isntagram iniciado")
+	fmt.Println("Servidor de gestion de servicios iniciado")
 
 	for path, handler := range hnd.Manejadores {
 		http.HandleFunc(path, handler)
@@ -22,7 +22,7 @@ func main() {
 	//http.HandleFunc("/js/", hnd.Js)
 	//http.HandleFunc("/envio", hnd.Insert)
 	//http.HandleFunc("/lista", hnd.List)
-	http.Handle("/files/", http.StripPrefix("/files/", http.FileServer(http.Dir("files"))))
+	//http.Handle("/files/", http.StripPrefix("/files/", http.FileServer(http.Dir("files"))))
 	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(port), nil))
 	fmt.Println("Servidor abierto en http://localhost:" + strconv.Itoa(port))
 
