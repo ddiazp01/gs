@@ -49,7 +49,7 @@ func JSFile(w http.ResponseWriter, r *http.Request) {
 
 }
 
-//CSSFile Manejador de archivos Css
+//CSSFile Manejador de archivos CSS
 func CSSFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Incoming request from " + r.URL.EscapedPath())
 	if r.Method != http.MethodGet {
@@ -57,7 +57,22 @@ func CSSFile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	http.ServeFile(w, r, "css/base.css")
+	file := r.URL.Path
+
+	if strings.HasPrefix(file, "/") {
+		file = file[1:len(r.URL.Path)]
+	}
+
+	switch file {
+	case //Internos
+		"css/base.css",
+		"css/inicio.css":
+		http.ServeFile(w, r, file)
+		break
+	default:
+		http.NotFound(w, r)
+		return
+	}
 }
 
 //RegisterFile para abrir pagina de registro
@@ -88,10 +103,10 @@ func LoginFile(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "pages/login.html")
 }
 
-//PerfilFile cargar pagina de parfil
-func PerfilFile(w http.ResponseWriter, r *http.Request) {
+//InicioFile cargar pagina de parfil
+func InicioFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
-	if r.URL.Path != PathPerfilFile {
+	if r.URL.Path != PathInicioFile {
 		http.NotFound(w, r)
 		return
 	}
@@ -99,5 +114,5 @@ func PerfilFile(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	http.ServeFile(w, r, "pages/perfil.html")
+	http.ServeFile(w, r, "pages/inicio.html")
 }
