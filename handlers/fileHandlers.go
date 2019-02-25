@@ -88,10 +88,10 @@ func LoginFile(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "pages/login.html")
 }
 
-//PerfilFile cargar pagina de parfil
-func PerfilFile(w http.ResponseWriter, r *http.Request) {
+//InicioFile cargar pagina de parfil
+func InicioFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
-	if r.URL.Path != PathPerfilFile {
+	if r.URL.Path != PathInicioFile {
 		http.NotFound(w, r)
 		return
 	}
@@ -99,5 +99,5 @@ func PerfilFile(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	http.ServeFile(w, r, "pages/perfil.html")
+	http.ServeFile(w, r, "pages/inicio.html")
 }

@@ -71,7 +71,7 @@ $(document).ready(function() {
         }).done(function(data) {
             console.log("Petición realizada");
             if(data==true){
-               window.location.href="/perfil";
+               window.location.href="/inicio";
             }
            
             //ActualizarHistorial();

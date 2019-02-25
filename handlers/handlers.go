@@ -23,8 +23,8 @@ const PathLoginFile string = "/loginFile"
 //PathLogin ruta de login
 const PathLogin string = "/login"
 
-//PathPerfilFile ruta perfil
-const PathPerfilFile string = "/perfil"
+//PathInicioFile ruta perfil
+const PathInicioFile string = "/inicio"
 
 //ManejadorHTTP encapsula como tipo la función de manejo de peticiones HTTP, para que sea posible almacenar sus referencias en un diccionario
 type ManejadorHTTP = func(w http.ResponseWriter, r *http.Request)
@@ -41,6 +41,6 @@ func init() {
 	Manejadores[PathRegister] = RegisterFile
 	Manejadores[PathLoginFile] = LoginFile
 	Manejadores[PathLogin] = Login
-	Manejadores[PathPerfilFile] = PerfilFile
+	Manejadores[PathInicioFile] = InicioFile
 
 }
