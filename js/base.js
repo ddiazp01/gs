@@ -1,5 +1,8 @@
 $(document).ready(function() {
-    console.log("hola")
+    
+
+    console.log(document.cookie);
+    
     $("#txtEmail").keyup(function(event) {
         if (event.keyCode === 13) {
              $("btnEnviar").click();
@@ -38,6 +41,7 @@ $(document).ready(function() {
  
          }).done(function(data) {
              console.log("Petición realizada");
+             
              //ActualizarHistorial();
          
          }).fail(function(data) {
@@ -84,6 +88,20 @@ $(document).ready(function() {
             console.log("Petición completa");
         });
    });
+   if (document.cookie != ""){
+    $("#logeado").show();
+    $("#no_logeado").hide();
+    console.log('no logeado');
+    
+}else{  
+    $("#no_logeado").show();
+    $("#logeado").hide();
+    console.log('logeado');
+    
+}
+var UserName = "{{.UserName}}";
+
+   
  
 
 })

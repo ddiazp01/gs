@@ -108,13 +108,6 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, respuesta)
 }
 
-// logout handler
-
-func logoutHandler(response http.ResponseWriter, request *http.Request) {
-	clearSession(response)
-	http.Redirect(response, request, "/", 302)
-}
-
 //Insert Funcion inserta en la base de datos
 func Insert(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Incoming request from " + r.URL.EscapedPath())
@@ -163,4 +156,10 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, e)
 	}
 
+}
+
+//Logout Función para cerrar sesion
+func Logout(response http.ResponseWriter, request *http.Request) {
+	clearSession(response)
+	http.Redirect(response, request, "/", 302)
 }

@@ -9,7 +9,7 @@ import (
 //IndexFile Función que devuelve el index.html
 func IndexFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Incoming request from " + r.URL.EscapedPath())
-	if r.URL.Path != PathInicio {
+	if r.URL.Path != PathIndex {
 		http.NotFound(w, r)
 		return
 	}
@@ -49,7 +49,7 @@ func JSFile(w http.ResponseWriter, r *http.Request) {
 
 }
 
-//CSSFile Manejador de archivos Css
+//CSSFile Manejador de archivos CSS
 func CSSFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Incoming request from " + r.URL.EscapedPath())
 	if r.Method != http.MethodGet {
@@ -57,7 +57,27 @@ func CSSFile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	http.ServeFile(w, r, "css/base.css")
+	file := r.URL.Path
+
+	if strings.HasPrefix(file, "/") {
+		file = file[1:len(r.URL.Path)]
+	}
+
+	switch file {
+	case //Internos
+		"css/base.css",
+		"css/register.css",
+		"css/login.css",
+		"css/deportes.css",
+		"css/empleo.css",
+		"css/tramites.css",
+		"css/inicio.css":
+		http.ServeFile(w, r, file)
+		break
+	default:
+		http.NotFound(w, r)
+		return
+	}
 }
 
 //RegisterFile para abrir pagina de registro
@@ -100,4 +120,46 @@ func InicioFile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	http.ServeFile(w, r, "pages/inicio.html")
+}
+
+//DeportesFile cargar pagina de parfil
+func DeportesFile(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
+	if r.URL.Path != PathDeportesFile {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodGet {
+		http.NotFound(w, r)
+		return
+	}
+	http.ServeFile(w, r, "pages/deportes.html")
+}
+
+//EmpleoFile cargar pagina de parfil
+func EmpleoFile(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
+	if r.URL.Path != PathEmpleoFile {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodGet {
+		http.NotFound(w, r)
+		return
+	}
+	http.ServeFile(w, r, "pages/empleo.html")
+}
+
+//TramitesFile cargar pagina de parfil
+func TramitesFile(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
+	if r.URL.Path != PathTramitesFile {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodGet {
+		http.NotFound(w, r)
+		return
+	}
+	http.ServeFile(w, r, "pages/tramites.html")
 }
