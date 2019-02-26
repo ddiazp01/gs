@@ -7,23 +7,53 @@
     <script src="/js/libs/jquery-3.3.1.min.js"></script>
     <script src="/js/libs/moment.min.js"></script>
     <script rel="stylesheet" type="text/javascript" src="/js/base.js"></script>
-    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
-
       
         
 </head>
 <body>
-    <div class="formulario">
-           <h2>Crear Cuenta</h2>
-           <form action="/register" class="formulario" method="post">
-                      <input type="text" id="txtTexto1" placeholder="Escriba su nombre"required>  
-                      <input type="text" id="txtTexto2" placeholder="Escriba sus apellidos"required> 
-                      <input type="text" id="txtTexto3" placeholder="Escriba su nombre de usuario"required>  
-                      <input type="password" id="txtPassword"placeholder="Password" required >
-                      <input type="email" id="txtEmail"placeholder="Email"required >
-                      <input type="button" id="btnEnviar" value ="Enviar" >     
-              </form>
-       </div>
+          <header>
+                    <nav>
+                        <a class="navbar-brand" href="/">
+                            <img src="https://files.slack.com/files-pri/TFA3WCUC9-FGDC4ACNM/image__2_.png" width="50" height="50" alt="">
+                        </a>
+                        <div>
+                            
+                            <a href="loginFile">Iniciar Sesión</a>
+                                    
+                        </div>
+                    </nav>
+                </header>
+        
+        <div class="container-fluid">
+                <div class="row">
+                        <form action="/register" class="formulario" method="post">
+                            <h1>Regístrate</h1>
+                               <div class="col-md-6">
+                                    <label for="txtTexto1"></label>
+                                    <input type="text" id="txtTexto1" placeholder="Escriba su nombre"required>  
+                               </div> 
+                               <div class="col-md-6">
+                                    <label for="txtTexto2"></label>
+                                    <input type="text" id="txtTexto2" placeholder="Escriba sus apellidos"required> 
+                               </div>     
+                        
+                               <div class="col-md-6">
+                                    <label for="txtTexto3"></label>
+                                    <input type="text" id="txtTexto3" placeholder="Escriba su nombre de usuario"required>  
+                               </div>
+                    
+                               <div class="col-md-6">
+                                    <label for="txtPassword"></label>
+                                    <input type="password" id="txtPassword"placeholder="Introduzca su contraseña" required >
+                               </div>
+                               <div class="col-md-6">
+                                    <label for="txtEmail"></label>
+                                    <input type="email" id="txtEmail"placeholder="Introduzca su correo"required ></br></br>
+                               </div>
+                               <center><input type="button" id="btnEnviar" value ="Enviar" > </center>    
+                            </form>
 </body>
 </html>

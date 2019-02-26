@@ -6,6 +6,8 @@
         <script src="/js/libs/moment.min.js"></script>
         <script type="text/javascript" src="/js/base.js"></script>
         <link rel="stylesheet" href="/css/base.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
         
     </head>
     <body>
@@ -14,10 +16,14 @@
                 <a class="navbar-brand" href="/">
                     <img src="https://files.slack.com/files-pri/TFA3WCUC9-FGDC4ACNM/image__2_.png" width="50" height="50" alt="">
                 </a>
-                <div>
-                    
+                <div id="no_logeado">
+                    <a href="register">Regístrate</a>
                     <a href="loginFile">Iniciar Sesión</a>
-                    <a href="register">Regístrate</a>          
+                </div>
+                <div id="logeado">
+                    <a href="logout">Cerrar Sesión</a>
+                    <a href="">{{.UserName}}</a>
+                    
                 </div>
             </nav>
         </header>
@@ -27,14 +33,22 @@
                 <div class="content-carrousel">
                     
                     <figure><a href="https://saludextremadura.ses.es/web/"> <img src="http://www.rrhhdigital.com/userfiles/curso_salud.jpg"></a></figure>
-                    <figure><a href="https://gobyexample.com/"> <img src="https://alcalainformacion.com/wp-content/uploads/2018/10/empleo.jpg"></a></figure>
-                    <figure><a href="https://gobyexample.com/"> <img src="https://trucoslondres.com/wp-content/uploads/2017/04/sports.jpg"></a></figure>
-                    <figure><a href="https://gobyexample.com/"> <img src="https://losrealejos.es/wp-content/uploads/2017/08/IMAGEN-MANO-717x465.jpg"></a></figure>
+
+                    <figure><a href="empleo"> <img src="https://alcalainformacion.com/wp-content/uploads/2018/10/empleo.jpg"></a></figure>
+
+                    <figure><a href="deportes"> <img src="https://trucoslondres.com/wp-content/uploads/2017/04/sports.jpg"></a></figure>
+
+                    <figure><a href="tramites"> <img src="https://losrealejos.es/wp-content/uploads/2017/08/IMAGEN-MANO-717x465.jpg"></a></figure>
+
                     <figure><a href="https://saludextremadura.ses.es/web/"> <img src="http://www.rrhhdigital.com/userfiles/curso_salud.jpg"></a></figure>
-                    <figure><a href="https://gobyexample.com/"> <img src="https://alcalainformacion.com/wp-content/uploads/2018/10/empleo.jpg"></a></figure>
-                    <figure><a href="https://gobyexample.com/"> <img src="https://trucoslondres.com/wp-content/uploads/2017/04/sports.jpg"></a></figure>
-                    <figure><a href="https://gobyexample.com/"> <img src="https://losrealejos.es/wp-content/uploads/2017/08/IMAGEN-MANO-717x465.jpg"></a></figure>
-                    <figure><a href="https://gobyexample.com/"> <img src="https://trucoslondres.com/wp-content/uploads/2017/04/sports.jpg"></a></figure>
+
+                    <figure><a href="empleo"> <img src="https://alcalainformacion.com/wp-content/uploads/2018/10/empleo.jpg"></a></figure>
+
+                    <figure><a href="deportes"> <img src="https://trucoslondres.com/wp-content/uploads/2017/04/sports.jpg"></a></figure>
+
+                    <figure><a href="tramites"> <img src="https://losrealejos.es/wp-content/uploads/2017/08/IMAGEN-MANO-717x465.jpg"></a></figure>
+
+                    <figure><a href="deportes"> <img src="https://trucoslondres.com/wp-content/uploads/2017/04/sports.jpg"></a></figure>
                     
                    
                 </div>

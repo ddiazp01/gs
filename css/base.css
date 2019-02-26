@@ -1,5 +1,6 @@
 header nav{
     background-color: #0c4742;
+    padding: 30px;
 }
 header nav a img{
     margin: 10px;
@@ -12,13 +13,20 @@ header nav div{
 }
 header nav div a{
     color:white;
-    text-decoration: none;
+    text-decoration: none ;
     letter-spacing: 0.6pt;
     margin-left: 20px;
     font-weight: bold;
     text-shadow: 0px 2px black;  
 }
-
+header nav div a:hover{
+    color:white;
+    text-decoration: none ;
+    letter-spacing: 0.6pt;
+    margin-left: 20px;
+    font-weight: bold;
+    text-shadow: 0px 2px black;  
+}
 
 *{
     margin: 0;
@@ -27,12 +35,14 @@ header nav div a{
 }
 
 h2{
+    
     text-align: center;
-    font-size: 44px;
-    font-family: arial;
-    margin-top: 80px;
-    color: #0c4742;
-    text-shadow: 0px 0px 2px black;
+    font-size: 44px !important;
+    font-family: arial !important;
+    margin-top: 80px !important;
+    color: #0c4742 !important;
+    text-shadow: 0px 0px 2px black !important;
+    
 }
 
 .content-all{
@@ -100,6 +110,8 @@ h2{
         transform: rotateY(360deg);
     }
 }
+
+
 
 
 
