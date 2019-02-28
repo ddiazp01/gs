@@ -25,9 +25,6 @@ const PathLoginFile string = "/loginFile"
 //PathLogin ruta de login
 const PathLogin string = "/login"
 
-//PathInicioFile ruta perfil
-const PathInicioFile string = "/inicio"
-
 //PathDeportesFile ruta perfil
 const PathDeportesFile string = "/deportes"
 
@@ -55,7 +52,6 @@ func init() {
 	Manejadores[PathRegister] = RegisterFile
 	Manejadores[PathLoginFile] = LoginFile
 	Manejadores[PathLogin] = Login
-	Manejadores[PathInicioFile] = InicioFile
 	Manejadores[PathTramitesFile] = TramitesFile
 	Manejadores[PathDeportesFile] = DeportesFile
 	Manejadores[PathEmpleoFile] = EmpleoFile

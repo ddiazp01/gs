@@ -108,20 +108,6 @@ func LoginFile(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "pages/login.html")
 }
 
-//InicioFile cargar pagina de parfil
-func InicioFile(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
-	if r.URL.Path != PathInicioFile {
-		http.NotFound(w, r)
-		return
-	}
-	if r.Method != http.MethodGet {
-		http.NotFound(w, r)
-		return
-	}
-	http.ServeFile(w, r, "pages/inicio.html")
-}
-
 //DeportesFile cargar pagina de parfil
 func DeportesFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
