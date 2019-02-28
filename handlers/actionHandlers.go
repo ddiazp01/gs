@@ -112,13 +112,6 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, respuesta)
 }
 
-// logout handler
-
-func logoutHandler(response http.ResponseWriter, request *http.Request) {
-	clearSession(response)
-	http.Redirect(response, request, "/", 302)
-}
-
 //Insert Funcion inserta en la base de datos
 func Insert(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Incoming request from " + r.URL.EscapedPath())
@@ -170,7 +163,6 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 }
 
 const (
-	// Time allowed to write a message to the peer.
 	writeWait = 10 * time.Second
 
 	// Time allowed to read the next pong message from the peer.
