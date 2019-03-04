@@ -5,13 +5,8 @@ import "net/http"
 //PathInicio ruta raiz
 const PathInicio string = "/"
 
-<<<<<<< HEAD
-//PathHome ruta home
-const PathHome string = "/home"
-=======
 //PathIndex ruta raiz
 const PathIndex string = "/"
->>>>>>> 354f70492f3b4a8fee63086dff16d623ddaedd6a
 
 //PathJSFiles ruta a la carpeta de scripts de javascript
 const PathJSFiles string = "/js/"
@@ -29,6 +24,9 @@ const PathLoginFile string = "/loginFile"
 
 //PathLogin ruta de login
 const PathLogin string = "/login"
+
+//PathHomeFile ruta perfil
+const PathHomeFile string = "/home"
 
 //PathDeportesFile ruta perfil
 const PathDeportesFile string = "/deportes"
@@ -50,14 +48,10 @@ var Manejadores map[string]ManejadorHTTP
 
 func init() {
 	Manejadores = make(map[string]ManejadorHTTP)
-<<<<<<< HEAD
-	Manejadores[PathInicio] = IndexFile
-	Manejadores[PathHome] = HomeFile
-=======
 	Manejadores[PathIndex] = IndexFile
->>>>>>> 354f70492f3b4a8fee63086dff16d623ddaedd6a
 	Manejadores[PathJSFiles] = JSFile
 	Manejadores[pathCSS] = CSSFile
+	Manejadores[PathHomeFile] = HomeFile
 	Manejadores[PathEnvioPeticion] = Insert
 	Manejadores[PathRegister] = RegisterFile
 	Manejadores[PathLoginFile] = LoginFile

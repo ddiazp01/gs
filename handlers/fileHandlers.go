@@ -20,20 +20,6 @@ func IndexFile(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "pages/index.html")
 }
 
-// HomeFile pagina de chat
-func HomeFile(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Incoming request from " + r.URL.EscapedPath())
-	if r.URL.Path != PathHome {
-		http.NotFound(w, r)
-		return
-	}
-	if r.Method != http.MethodGet {
-		http.NotFound(w, r)
-		return
-	}
-	http.ServeFile(w, r, "pages/home.html")
-}
-
 //JSFile Manejador de archivos javascript
 func JSFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Incoming request from " + r.URL.EscapedPath())
@@ -76,18 +62,6 @@ func CSSFile(w http.ResponseWriter, r *http.Request) {
 		file = file[1:len(r.URL.Path)]
 	}
 
-<<<<<<< HEAD
-	switch file {
-	case //Internos
-		"css/register.css",
-		"css/base.css":
-=======
-	file := r.URL.Path
-
-	if strings.HasPrefix(file, "/") {
-		file = file[1:len(r.URL.Path)]
-	}
-
 	switch file {
 	case //Internos
 		"css/base.css",
@@ -97,7 +71,6 @@ func CSSFile(w http.ResponseWriter, r *http.Request) {
 		"css/empleo.css",
 		"css/tramites.css",
 		"css/inicio.css":
->>>>>>> 354f70492f3b4a8fee63086dff16d623ddaedd6a
 		http.ServeFile(w, r, file)
 		break
 	default:
@@ -174,4 +147,18 @@ func TramitesFile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	http.ServeFile(w, r, "pages/tramites.html")
+}
+
+//HomeFile cargar home
+func HomeFile(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
+	if r.URL.Path != PathHomeFile {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodGet {
+		http.NotFound(w, r)
+		return
+	}
+	http.ServeFile(w, r, "pages/home.html")
 }

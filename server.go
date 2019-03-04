@@ -20,6 +20,7 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 	}
 	http.ServeFile(w, r, "home.html")
 }
+
 func main() {
 	port := 8080
 

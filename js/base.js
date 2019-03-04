@@ -75,7 +75,7 @@ $(document).ready(function() {
         }).done(function(data) {
             console.log("Petición realizada");
             if(data==true){
-               window.location.href="/inicio";
+               window.location.href="/";
             }
            
             //ActualizarHistorial();
@@ -97,11 +97,6 @@ $(document).ready(function() {
     $("#no_logeado").show();
     $("#logeado").hide();
     console.log('logeado');
-    
 }
-var UserName = "{{.UserName}}";
-
-   
- 
 
 })
