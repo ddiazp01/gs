@@ -8,7 +8,7 @@
     <script src="/js/libs/moment.min.js"></script>
     <script rel="stylesheet" type="text/javascript" src="/js/base.js"></script>
     <link rel="stylesheet" href="/css/register.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
     
       
         
@@ -26,35 +26,45 @@
                         </div>
                     </nav>
                 </header>
-        
-        <div class="container-fluid">
-                <div class="row">
-                        <form action="/register" class="formulario" method="post">
-                            <h1>Regístrate</h1>
-                               <div class="col-md-6">
-                                    <label for="txtTexto1"></label>
-                                    <input type="text" id="txtTexto1" placeholder="Nombre"required>  
-                               </div> 
-                               <div class="col-md-6">
-                                    <label for="txtTexto2"></label>
-                                    <input type="text" id="txtTexto2" placeholder="Apellidos"required> 
-                               </div>     
-                        
-                               <div class="col-md-6">
-                                    <label for="txtTexto3"></label>
-                                    <input type="text" id="txtTexto3" placeholder="Nombre de Usuario"required>  
-                               </div>
+                 
+    
+    <div class="page">
+            <div class="container">
+              <div class="left">
+                <div class="login">Registrate</div>
+                <div class="eula">Con  GS es muy sencillo de disfrutar de todas las citas. Te esperamos en el mejor Gestor de Citas de toda la comarca.
                     
-                               <div class="col-md-6">
-                                    <label for="txtPassword"></label>
-                                    <input type="password" id="txtPassword"placeholder="Contraseña" required >
-                               </div>
-                               <div class="col-md-6">
-                                    <label for="txtEmail"></label>
-                                    <input type="email" id="txtEmail"placeholder="Correo"required ></br></br>
-                               </div>
-                               <input type="button" id="btnEnviar" value ="Enviar" >
+                </div>
+              </div>
+              <div class="right">
+                <svg viewBox="0 0 320 300">
+                 
+                </svg>
+                <div class="form">
+                        <form method="post" action="/register" width="150px">
+                    <label for="txtTexto1"> </label>
+                    <input type="text" id="txtTexto1"  placeholder="Nombre"><hr>
 
-                            </form>
+                    <label for="txtTexto2"></label>
+                    <input type="text" id="txtTexto2"  placeholder="Apellidos"><hr>
+
+                    <label for="txtTexto3"></label>
+                    <input type="text" id="txtTexto3"  placeholder="Nombre de Usuario"><hr>
+
+                    <label for="txtPassword"></label>
+                    <input type="password" id="txtPassword"  placeholder="Contraseña"><hr>
+
+                    <label for="txtEmail"></label>
+                    <input type="text" id="txtEmail"  placeholder="Email"><hr>
+
+                    <button type="button" id="btnEnviar" >Registrate</button>
+                        </form>
+                </div>
+              </div>
+            </div>
+          </div>
+                
+        
+    
 </body>
 </html>

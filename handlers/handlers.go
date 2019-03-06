@@ -25,15 +25,6 @@ const PathLoginFile string = "/loginFile"
 //PathLogin ruta de login
 const PathLogin string = "/login"
 
-//PathDeportesFile ruta perfil
-const PathDeportesFile string = "/deportes"
-
-//PathEmpleoFile ruta perfil
-const PathEmpleoFile string = "/empleo"
-
-//PathTramitesFile ruta perfil
-const PathTramitesFile string = "/tramites"
-
 //PathLogout te lleva al logout
 const PathLogout string = "/logout"
 
@@ -52,9 +43,6 @@ func init() {
 	Manejadores[PathRegister] = RegisterFile
 	Manejadores[PathLoginFile] = LoginFile
 	Manejadores[PathLogin] = Login
-	Manejadores[PathTramitesFile] = TramitesFile
-	Manejadores[PathDeportesFile] = DeportesFile
-	Manejadores[PathEmpleoFile] = EmpleoFile
 	Manejadores[PathLogout] = Logout
 
 }

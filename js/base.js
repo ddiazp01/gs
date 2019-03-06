@@ -41,6 +41,9 @@ $(document).ready(function() {
  
          }).done(function(data) {
              console.log("Petición realizada");
+             if(data!=true){
+                window.location.href="/loginFile";
+             }
              
              //ActualizarHistorial();
          
@@ -53,8 +56,8 @@ $(document).ready(function() {
     });
 //Login
     $("#btnLogin").click(function() {
-        var username = $("#txtTexto3").val()
-        var password = $("#txtPassword").val()
+        var username = $("#txtTexto33").val()
+        var password = $("#txtPassword1").val()
        console.log(username, password );
 
        var login = {
@@ -75,7 +78,7 @@ $(document).ready(function() {
         }).done(function(data) {
             console.log("Petición realizada");
             if(data==true){
-               window.location.href="/inicio";
+               window.location.href="/";
             }
            
             //ActualizarHistorial();
@@ -93,13 +96,13 @@ $(document).ready(function() {
     $("#no_logeado").hide();
     console.log('no logeado');
     
-}else{  
+}   else{  
     $("#no_logeado").show();
     $("#logeado").hide();
     console.log('logeado');
     
 }
-var UserName = "{{.UserName}}";
+   
 
    
  

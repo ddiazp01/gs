@@ -8,7 +8,6 @@
     <script src="/js/libs/moment.min.js"></script>
     <script rel="stylesheet" type="text/javascript" src="/js/base.js"></script>
     <link rel="stylesheet" href="/css/login.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
       
         
@@ -17,26 +16,39 @@
         <header>
                 <nav>
                     <a class="navbar-brand" href="/">
-                        <img src="https://files.slack.com/files-pri/TFA3WCUC9-FGDC4ACNM/image__2_.png" width="50" height="50" alt="">
+                        <img src="https://files.slack.com/files-pri/TFA3WCUC9-FGDC4ACNM/image__2_.png" alt="hola" width="50" height="50" alt="">
                     </a>
                     <div>
-                        
                         
                         <a href="register">Regístrate</a>          
                     </div>
                 </nav>
             </header>
     
-    <div class="container-fluid" id="login">
-        
-        <form method="post" action="/loginFile" width="150px">
-            <h1> Identificación </h1>
-            <label for="userName"> </label>
-            <input type="text" id="txtTexto3" name="userName" placeholder="Escriba su nombre de usuario"></br></br>
-            <label for="password"></label>
-            <input type="password" id="txtPassword" name="password" placeholder="Introduzca su contraseña"></br></br>
-            <center><button type="button" id="btnLogin" style="background:lightgoldenrodyellow">Iniciar Sesión</button></center>
-        </form>
-    </div>   
+    
+    <div class="page">
+        <div class="container">
+          <div class="left">
+            <div class="login">Iniciar Sesión</div>
+            <div class="eula">Con  GS es muy sencillo de disfrutar de todas las citas. Te esperamos en el mejor Gestor de Citas de toda la comarca.
+            
+            </div>
+          </div>
+          <div class="right">
+            <svg viewBox="0 0 320 300">
+         </svg>
+            <div class="form">
+                    <form method="post" action="/loginFile" width="150px">
+                <label for="userName"> </label>
+                <input type="text" id="txtTexto33" name="userName" placeholder="Nombre de Usuario"><hr>
+                <label for="password"></label>
+                <input type="password" id="txtPassword1" name="password" placeholder="Contraseña"><hr>
+                <button type="button" id="btnLogin" >Iniciar Sesión</button>
+                    </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
 </body>
 </html>
