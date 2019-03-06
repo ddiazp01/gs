@@ -1,5 +1,9 @@
 package model
 
+import (
+	"time"
+)
+
 // RUsuario struct
 type RUsuario struct {
 	ID        int
@@ -14,4 +18,12 @@ type RUsuario struct {
 type RLogin struct {
 	UserName string
 	Password string
+}
+
+//RCitas struct
+type RCitas struct {
+	ID    int
+	Texto string
+	Fecha time.Time
+	Hora  time.Time
 }

@@ -7,6 +7,7 @@ import (
 	"gs/data/model"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/gorilla/securecookie"
 	"golang.org/x/crypto/bcrypt"
@@ -32,6 +33,7 @@ func NombreUsuario(response http.ResponseWriter, request *http.Request) {
 	name := getUserName(request)
 	fmt.Fprintf(response, name)
 }
+
 func setSession(username string, response http.ResponseWriter) {
 	value := map[string]string{
 		"username": username,
@@ -163,3 +165,90 @@ func Logout(response http.ResponseWriter, request *http.Request) {
 	clearSession(response)
 	http.Redirect(response, request, "/", 302)
 }
+
+//InsertCita Función que inserta una cita en la base de datos local
+func InsertCita(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Incoming request from " + r.URL.EscapedPath())
+	if r.URL.Path != PathInsertCita {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodPost {
+		http.NotFound(w, r)
+		return
+	}
+
+	defer r.Body.Close()
+	bytes, e := ioutil.ReadAll(r.Body)
+
+	if e == nil {
+		var citas model.Citas
+		enTexto := string(bytes)
+
+		fmt.Println("En texto: " + enTexto)
+		_ = json.Unmarshal(bytes, &citas)
+
+		if citas.Texto != "" {
+			citas.Texto = strings.ToUpper(citas.Texto)
+
+		} else {
+			w.WriteHeader(http.StatusBadRequest)
+			fmt.Fprintln(w, "La cita está vacía")
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+
+		w.Header().Add("Content-Type", "application/json")
+
+		respuesta, _ := json.Marshal(citas)
+		fmt.Fprint(w, string(respuesta))
+
+		fmt.Println(citas)
+
+		go client.InsertarCita(&citas)
+	} else {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintln(w, e)
+	}
+}
+
+//ListCitas Función que devuelve las peticiones de la base de datos dado un filtro
+/*func ListCitas(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Incoming request from " + r.URL.EscapedPath())
+	if r.URL.Path != PathListCitas {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodPost {
+		http.NotFound(w, r)
+		return
+	}
+	defer r.Body.Close()
+	bytes, e := ioutil.ReadAll(r.Body)
+
+	if e == nil {
+		var citas model.Citas
+		e = json.Unmarshal(bytes, &citas)
+
+		if e == nil {
+			lista := client.ConsultarCitas(&citas)
+
+			w.WriteHeader(http.StatusOK)
+
+			w.Header().Add("Content-Type", "application/json")
+
+			respuesta, _ := json.Marshal(&lista)
+			fmt.Fprint(w, string(respuesta))
+		} else {
+			w.WriteHeader(http.StatusBadRequest)
+			fmt.Fprintln(w, "La cita no pudo ser parseada")
+			fmt.Fprintln(w, e.Error())
+			return
+		}
+
+	} else {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintln(w, e)
+	}
+}*/

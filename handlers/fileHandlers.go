@@ -39,7 +39,8 @@ func JSFile(w http.ResponseWriter, r *http.Request) {
 	case "js/libs/jquery-3.3.1.min.js",
 		"js/libs/moment.min.js",
 		//Internos
-		"js/base.js":
+		"js/base.js",
+		"js/citas.js":
 		http.ServeFile(w, r, file)
 		break
 	default:
@@ -148,4 +149,18 @@ func TramitesFile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	http.ServeFile(w, r, "pages/tramites.html")
+}
+
+//CitasFile cargar pagina de perfil
+func CitasFile(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
+	if r.URL.Path != PathCitasFile {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodGet {
+		http.NotFound(w, r)
+		return
+	}
+	http.ServeFile(w, r, "pages/citas.html")
 }
