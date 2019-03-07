@@ -7,7 +7,6 @@ import (
 	"gs/data/model"
 	"io/ioutil"
 	"net/http"
-	"strings"
 
 	"github.com/gorilla/securecookie"
 	"golang.org/x/crypto/bcrypt"
@@ -189,8 +188,7 @@ func InsertCita(w http.ResponseWriter, r *http.Request) {
 		_ = json.Unmarshal(bytes, &citas)
 
 		if citas.Texto != "" {
-			citas.Texto = strings.ToUpper(citas.Texto)
-
+			/*citas.Texto = strings.ToUpper(citas.Texto)*/
 		} else {
 			w.WriteHeader(http.StatusBadRequest)
 			fmt.Fprintln(w, "La cita está vacía")
