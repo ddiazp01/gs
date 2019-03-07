@@ -39,7 +39,8 @@ func JSFile(w http.ResponseWriter, r *http.Request) {
 	case "js/libs/jquery-3.3.1.min.js",
 		"js/libs/moment.min.js",
 		//Internos
-		"js/base.js":
+		"js/base.js",
+		"js/chat.js":
 		http.ServeFile(w, r, file)
 		break
 	default:
@@ -70,7 +71,8 @@ func CSSFile(w http.ResponseWriter, r *http.Request) {
 		"css/deportes.css",
 		"css/empleo.css",
 		"css/tramites.css",
-		"css/inicio.css":
+		"css/inicio.css",
+		"css/chat.css":
 		http.ServeFile(w, r, file)
 		break
 	default:

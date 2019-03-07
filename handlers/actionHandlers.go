@@ -163,11 +163,11 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 
 const (
 	writeWait = 10 * time.Second
-	// Time allowed to read the next pong message from the peer.
+	//Tiempo permitido para leer el siguiente mensaje pong del par.
 	pongWait = 60 * time.Second
-	// Send pings to peer with this period. Must be less than pongWait.
+	// Enviar pings para mirar con este período. Debe ser menos de pong Espera.
 	pingPeriod = (pongWait * 9) / 10
-	// Maximum message size allowed from peer.
+	// Tamaño máximo de mensaje permitido desde el par.
 	maxMessageSize = 512
 )
 
@@ -181,13 +181,16 @@ var upgrader = websocket.Upgrader{
 	WriteBufferSize: 1024,
 }
 
-// Client is a middleman between the websocket connection and the hub.
-type Client struct {
-	hub *Hub
-	// The websocket connection.
-	conn *websocket.Conn
-	// Buffered channel of outbound messages.
-	send chan []byte
+//El cliente es un intermediario entre la conexión websocket y el hub.
+type Usuario struct {
+	Name      string
+	Apellidos string
+	UserName  string
+	Password  string
+	Email     string
+	hub       *Hub
+	conn      *websocket.Conn
+	send      chan []byte
 }
 
 // readPump pumps messages from the websocket connection to the hub.
@@ -195,7 +198,7 @@ type Client struct {
 // ensures that there is at most one reader on a connection by executing all
 // reads from this goroutine.
 
-func (c *Client) readPump() {
+func (c *Usuario) readPump() {
 	defer func() {
 		c.hub.unregister <- c
 		c.conn.Close()
@@ -216,12 +219,11 @@ func (c *Client) readPump() {
 	}
 }
 
-// writePump pumps messages from the hub to the websocket connection.
-// A goroutine running writePump is started for each connection. The
-// application ensures that there is at most one writer to a connection by
-// executing all writes from this goroutine.
-
-func (c *Client) writePump() {
+// Escriba los mensajes de Pump pump desde el concentrador a la conexión websocket.
+// Se inicia un goroutine que ejecuta writePump para cada conexión. los
+// la aplicación garantiza que hay como máximo un escritor a una conexión por
+// ejecutando todas las escrituras de este goroutine.
+func (c *Usuario) writePump() {
 	ticker := time.NewTicker(pingPeriod)
 	defer func() {
 		ticker.Stop()
@@ -262,60 +264,60 @@ func (c *Client) writePump() {
 	}
 }
 
-// serveWs handles websocket requests from the peer.
+// Servir W maneja las solicitudes de websocket desde el par.
 func serveWs(hub *Hub, w http.ResponseWriter, r *http.Request) {
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println(err)
 		return
 	}
-	client := &Client{hub: hub, conn: conn, send: make(chan []byte, 256)}
-	client.hub.register <- client
+	usuario := &Usuario{hub: hub, conn: conn, send: make(chan []byte, 256)}
+	usuario.hub.register <- usuario
 
 	// Allow collection of memory referenced by the caller by doing all work in
 	// new goroutines.
-	go client.writePump()
-	go client.readPump()
+	go usuario.writePump()
+	go usuario.readPump()
 }
 
 // Hub struct
 type Hub struct {
 	// Registered clients.
-	clients map[*Client]bool
+	usuarios map[*Usuario]bool
 	// Inbound messages from the clients.
 	broadcast chan []byte
 	// Register requests from the clients.
-	register chan *Client
+	register chan *Usuario
 	// Unregister requests from clients.
-	unregister chan *Client
+	unregister chan *Usuario
 }
 
 func newHub() *Hub {
 	return &Hub{
 		broadcast:  make(chan []byte),
-		register:   make(chan *Client),
-		unregister: make(chan *Client),
-		clients:    make(map[*Client]bool),
+		register:   make(chan *Usuario),
+		unregister: make(chan *Usuario),
+		usuarios:   make(map[*Usuario]bool),
 	}
 }
 
 func (h *Hub) run() {
 	for {
 		select {
-		case client := <-h.register:
-			h.clients[client] = true
-		case client := <-h.unregister:
-			if _, ok := h.clients[client]; ok {
-				delete(h.clients, client)
-				close(client.send)
+		case usuario := <-h.register:
+			h.usuarios[usuario] = true
+		case usuario := <-h.unregister:
+			if _, ok := h.usuarios[usuario]; ok {
+				delete(h.usuarios, usuario)
+				close(usuario.send)
 			}
 		case message := <-h.broadcast:
-			for client := range h.clients {
+			for usuario := range h.usuarios {
 				select {
-				case client.send <- message:
+				case usuario.send <- message:
 				default:
-					close(client.send)
-					delete(h.clients, client)
+					close(usuario.send)
+					delete(h.usuarios, usuario)
 				}
 			}
 		}
