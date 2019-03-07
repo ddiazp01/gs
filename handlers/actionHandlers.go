@@ -166,17 +166,10 @@ func Logout(response http.ResponseWriter, request *http.Request) {
 	http.Redirect(response, request, "/", 302)
 }
 
-<<<<<<< HEAD
-//InsertCita Función que inserta una cita en la base de datos local
-func InsertCita(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Incoming request from " + r.URL.EscapedPath())
-	if r.URL.Path != PathInsertCita {
-=======
 //Insert2 Función que inserta una petición en la base de datos local
 func Insert2(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Incoming request from " + r.URL.EscapedPath())
 	if r.URL.Path != PathEnvioPeticion2 {
->>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 		http.NotFound(w, r)
 		return
 	}
@@ -189,19 +182,6 @@ func Insert2(w http.ResponseWriter, r *http.Request) {
 	bytes, e := ioutil.ReadAll(r.Body)
 
 	if e == nil {
-<<<<<<< HEAD
-		var citas model.Citas
-		enTexto := string(bytes)
-
-		fmt.Println("En texto: " + enTexto)
-		_ = json.Unmarshal(bytes, &citas)
-
-		if citas.Texto != "" {
-			/*citas.Texto = strings.ToUpper(citas.Texto)*/
-		} else {
-			w.WriteHeader(http.StatusBadRequest)
-			fmt.Fprintln(w, "La cita está vacía")
-=======
 		var peticion model.Peticion
 		enTexto := string(bytes)
 		fmt.Println("En texto: " + enTexto)
@@ -212,7 +192,6 @@ func Insert2(w http.ResponseWriter, r *http.Request) {
 		} else {
 			w.WriteHeader(http.StatusBadRequest)
 			fmt.Fprintln(w, "La petición está vacía")
->>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 			return
 		}
 
@@ -220,36 +199,20 @@ func Insert2(w http.ResponseWriter, r *http.Request) {
 
 		w.Header().Add("Content-Type", "application/json")
 
-<<<<<<< HEAD
-		respuesta, _ := json.Marshal(citas)
-		fmt.Fprint(w, string(respuesta))
-
-		fmt.Println(citas)
-
-		go client.InsertarCita(&citas)
-=======
 		respuesta, _ := json.Marshal(peticion)
 		fmt.Fprint(w, string(respuesta))
 
 		go client.InsertarPeticion2(&peticion)
->>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 	} else {
 		w.WriteHeader(http.StatusBadRequest)
 		fmt.Fprintln(w, e)
 	}
 }
 
-<<<<<<< HEAD
-//ListCitas Función que devuelve las peticiones de la base de datos dado un filtro
-/*func ListCitas(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Incoming request from " + r.URL.EscapedPath())
-	if r.URL.Path != PathListCitas {
-=======
 //List Función que devuelve las peticiones de la base de datos dado un filtro
 func List(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Incoming request from " + r.URL.EscapedPath())
 	if r.URL.Path != PathCitasFile {
->>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 		http.NotFound(w, r)
 		return
 	}
@@ -261,19 +224,11 @@ func List(w http.ResponseWriter, r *http.Request) {
 	bytes, e := ioutil.ReadAll(r.Body)
 
 	if e == nil {
-<<<<<<< HEAD
-		var citas model.Citas
-		e = json.Unmarshal(bytes, &citas)
-
-		if e == nil {
-			lista := client.ConsultarCitas(&citas)
-=======
 		var filtro model.Filtro
 		e = json.Unmarshal(bytes, &filtro)
 
 		if e == nil {
 			lista := client.ListarRegistros(&filtro)
->>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 
 			w.WriteHeader(http.StatusOK)
 
@@ -283,11 +238,7 @@ func List(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, string(respuesta))
 		} else {
 			w.WriteHeader(http.StatusBadRequest)
-<<<<<<< HEAD
-			fmt.Fprintln(w, "La cita no pudo ser parseada")
-=======
 			fmt.Fprintln(w, "La petición no pudo ser parseada")
->>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 			fmt.Fprintln(w, e.Error())
 			return
 		}
@@ -296,8 +247,4 @@ func List(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		fmt.Fprintln(w, e)
 	}
-<<<<<<< HEAD
-}*/
-=======
 }
->>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798

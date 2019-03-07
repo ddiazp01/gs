@@ -1,12 +1,6 @@
 package model
 
-<<<<<<< HEAD
-import (
-	"time"
-)
-=======
 import "time"
->>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 
 //Usuario struct
 type Usuario struct {

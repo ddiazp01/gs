@@ -39,13 +39,8 @@ func JSFile(w http.ResponseWriter, r *http.Request) {
 	case "js/libs/jquery-3.3.1.min.js",
 		"js/libs/moment.min.js",
 		//Internos
-<<<<<<< HEAD
-		"js/base.js",
-		"js/citas.js":
-=======
 		"js/base.js":
 
->>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 		http.ServeFile(w, r, file)
 		break
 	default:
@@ -109,20 +104,6 @@ func LoginFile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	http.ServeFile(w, r, "pages/login.html")
-}
-
-// CitasFile para abrir pagina de Citas
-func CitasFile(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
-	if r.URL.Path != PathCitasFile {
-		http.NotFound(w, r)
-		return
-	}
-	if r.Method != http.MethodGet {
-		http.NotFound(w, r)
-		return
-	}
-	http.ServeFile(w, r, "pages/citas.html")
 }
 
 //CitasFile cargar pagina de perfil
