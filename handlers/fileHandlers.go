@@ -39,8 +39,13 @@ func JSFile(w http.ResponseWriter, r *http.Request) {
 	case "js/libs/jquery-3.3.1.min.js",
 		"js/libs/moment.min.js",
 		//Internos
+<<<<<<< HEAD
 		"js/base.js",
 		"js/citas.js":
+=======
+		"js/base.js":
+
+>>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 		http.ServeFile(w, r, file)
 		break
 	default:
@@ -68,11 +73,8 @@ func CSSFile(w http.ResponseWriter, r *http.Request) {
 	case //Internos
 		"css/base.css",
 		"css/register.css",
-		"css/login.css",
-		"css/deportes.css",
-		"css/empleo.css",
-		"css/tramites.css",
-		"css/inicio.css":
+		"css/login.css":
+
 		http.ServeFile(w, r, file)
 		break
 	default:
@@ -109,10 +111,10 @@ func LoginFile(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "pages/login.html")
 }
 
-//DeportesFile cargar pagina de parfil
-func DeportesFile(w http.ResponseWriter, r *http.Request) {
+// CitasFile para abrir pagina de Citas
+func CitasFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
-	if r.URL.Path != PathDeportesFile {
+	if r.URL.Path != PathCitasFile {
 		http.NotFound(w, r)
 		return
 	}
@@ -120,35 +122,7 @@ func DeportesFile(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	http.ServeFile(w, r, "pages/deportes.html")
-}
-
-//EmpleoFile cargar pagina de parfil
-func EmpleoFile(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
-	if r.URL.Path != PathEmpleoFile {
-		http.NotFound(w, r)
-		return
-	}
-	if r.Method != http.MethodGet {
-		http.NotFound(w, r)
-		return
-	}
-	http.ServeFile(w, r, "pages/empleo.html")
-}
-
-//TramitesFile cargar pagina de parfil
-func TramitesFile(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
-	if r.URL.Path != PathTramitesFile {
-		http.NotFound(w, r)
-		return
-	}
-	if r.Method != http.MethodGet {
-		http.NotFound(w, r)
-		return
-	}
-	http.ServeFile(w, r, "pages/tramites.html")
+	http.ServeFile(w, r, "pages/citas.html")
 }
 
 //CitasFile cargar pagina de perfil

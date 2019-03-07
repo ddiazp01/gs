@@ -25,18 +25,10 @@ const PathLoginFile string = "/loginFile"
 //PathLogin ruta de login
 const PathLogin string = "/login"
 
-//PathDeportesFile ruta perfil
-const PathDeportesFile string = "/deportes"
-
-//PathEmpleoFile ruta perfil
-const PathEmpleoFile string = "/empleo"
-
-//PathTramitesFile ruta perfil
-const PathTramitesFile string = "/tramites"
-
 //PathLogout te lleva al logout
 const PathLogout string = "/logout"
 
+<<<<<<< HEAD
 //PathInsertCita
 const PathInsertCita string = "/insertcita"
 
@@ -46,6 +38,14 @@ const PathListCitas string = "/listcitas"
 //PathCitasFile
 const PathCitasFile string = "/citas"
 
+=======
+//PathCitasFile te lleva al logout
+const PathCitasFile string = "/citas"
+
+//PathEnvioPeticion2 Ruta de envío de peticiones
+const PathEnvioPeticion2 string = "/envio2"
+
+>>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 //ManejadorHTTP encapsula como tipo la función de manejo de peticiones HTTP, para que sea posible almacenar sus referencias en un diccionario
 type ManejadorHTTP = func(w http.ResponseWriter, r *http.Request)
 
@@ -61,11 +61,14 @@ func init() {
 	Manejadores[PathRegister] = RegisterFile
 	Manejadores[PathLoginFile] = LoginFile
 	Manejadores[PathLogin] = Login
-	Manejadores[PathTramitesFile] = TramitesFile
-	Manejadores[PathDeportesFile] = DeportesFile
-	Manejadores[PathEmpleoFile] = EmpleoFile
 	Manejadores[PathLogout] = Logout
+<<<<<<< HEAD
 	Manejadores[PathInsertCita] = InsertCita
 	/*Manejadores[PathListCitas] = ListCitas*/
 	Manejadores[PathCitasFile] = CitasFile
+=======
+	Manejadores[PathCitasFile] = CitasFile
+	Manejadores[PathEnvioPeticion2] = Insert2
+
+>>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 }

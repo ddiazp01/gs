@@ -1,8 +1,12 @@
 package model
 
+<<<<<<< HEAD
 import (
 	"time"
 )
+=======
+import "time"
+>>>>>>> 8cda52efc8a5d19aabafe99f889d269cfad83798
 
 //Usuario struct
 type Usuario struct {
@@ -42,4 +46,15 @@ type RespuestasAutomaticas struct {
 type Login struct {
 	UserName string
 	Password string
+}
+
+//Peticion struct
+type Peticion struct {
+	Nombre string
+	Fecha  time.Time
+}
+
+//Filtro struct
+type Filtro struct {
+	Fecha time.Time
 }
