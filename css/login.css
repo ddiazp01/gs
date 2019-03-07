@@ -1,5 +1,5 @@
 nav{
-  display:absolute;
+  position: fixed;
 }
 header nav{
   background-color: #0c4742;

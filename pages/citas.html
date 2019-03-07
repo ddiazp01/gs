@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ejercicio 1</title>
+        <script src="/js/libs/jquery-3.3.1.min.js"></script>
+        <script src="/js/libs/moment.min.js"></script>
+        <script type="text/javascript" src="/js/base.js"></script>
+        <link rel="stylesheet" href="/css/base.css">
+        
+        
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="navbar-brand" href="/">
+                    <img src="https://files.slack.com/files-pri/TFA3WCUC9-FGDC4ACNM/image__2_.png" width="50" height="50" alt="">
+                </a>
+                <div id="no_logeado">
+                    <a href="register">Regístrate</a>
+                    <a href="loginFile">Iniciar Sesión</a>
+                </div>
+                <div id="logeado">
+                    <a href="logout">Cerrar Sesión</a>
+                    
+                    
+                </div>
+                
+            </nav>
+        </header>
+
+        <body>
+        
+            <h3>CITAS</h3>
+            <form action="/citas" method="POST" enctype="multipart/form-data">
+
+                <input type="text" id="txtTexto11" />
+                <input type="datetime-local" id="meeting-time"
+                name="meeting-time" value=""
+                min="" max="">
+                
+                <input type="button" id="btnEnviar2" value="Enviar" />
+               
+
+
+
+            </form>
+            <table id="historial">
+                <thead>
+                    <th>ID</th>
+                    <th>Cita</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+        
+    </body>
+</html>
